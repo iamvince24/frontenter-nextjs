@@ -1,0 +1,130 @@
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin table {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+%btnBasic {
+  font-size: var(--text-size-h3);
+  font-weight: 400;
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+@mixin outlinedBtn($width, $height) {
+  width: $width;
+  height: $height;
+  background: none;
+  @extend %btnBasic;
+  @extend %btnEffectOutlined;
+}
+
+%btnEffectOutlined {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    transition: 0.3s;
+    width: 0;
+    left: -10%;
+    bottom: 0;
+    height: 50px;
+    z-index: -1;
+    transform: skewX(15deg);
+    background: var(--primary-color);
+  }
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+  &:hover:after {
+    left: -10%;
+    width: 120%;
+  }
+}
+
+@mixin filledBtn($width, $height) {
+  width: $width;
+  height: $height;
+  background: var(--primary-color);
+  @extend %btnBasic;
+  @extend %btnEffectFilled;
+}
+
+%btnEffectFilled {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    transition: 0.3s;
+    width: 0;
+    left: -10%;
+    bottom: 0;
+    height: 50px;
+    z-index: -1;
+    transform: skewX(15deg);
+    background: white;
+  }
+  &:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+  &:hover:after {
+    left: -10%;
+    width: 120%;
+  }
+}
+
+.outlinedBtn {
+  margin-top: 40px;
+  @include outlinedBtn(160px, 40px);
+  @include mobile {
+    margin-top: 20px;
+    @include outlinedBtn(100px, 30px);
+  }
+}
+.filledBtn {
+  margin-top: 40px;
+  @include filledBtn(160px, 40px);
+  @include mobile {
+    margin-top: 20px;
+    @include filledBtn(100px, 30px);
+  }
+}
+
+.outlinedBigBtn {
+  @include outlinedBtn(220px, 40px);
+  @include mobile {
+    margin-top: 20px;
+    @include outlinedBtn(150px, 30px);
+  }
+}
+.filledBigBtn {
+  @include filledBtn(220px, 40px);
+  @include mobile {
+    margin-top: 20px;
+    @include filledBtn(150px, 30px);
+  }
+}

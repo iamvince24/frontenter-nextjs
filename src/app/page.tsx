@@ -1,95 +1,85 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
+
+function EffectBtn({ name, btnType }: { name: string; btnType: string }) {
+  return <button className={styles[btnType]}>{name}</button>;
+}
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <section className={styles.keyVisual}>
+        <div className={styles.keyVisualContent}>
+          <h1 className={styles.keyVisualTitile}>FRONT-ENTER</h1>
+          <p>前端轉職資訊</p>
+          <Image
+            className={styles.arrowIcon}
+            width={22}
+            height={22}
+            src="/arrowIcon.svg"
+            alt="arrowIcon"
+          />
         </div>
-      </div>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className={styles.testSection}>
+        <p>想知道自己適合什麼學習環境嗎？</p>
+        <p>可以點擊按鈕測測看哦！</p>
+        <EffectBtn name={"測試 GO"} btnType={"outlinedBtn"} />
+      </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <section className={styles.articleSection}>
+        <p>教室精選</p>
+        <EffectBtn name={"AppWorks School"} btnType={"outlinedBigBtn"} />
+        <EffectBtn name={"彭彭的課程教學"} btnType={"outlinedBigBtn"} />
+        <EffectBtn name={"五倍紅寶石"} btnType={"outlinedBigBtn"} />
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+      <section className={styles.informationSection}>
+        <div className={styles.informationSectionCard}>
+          <Image
+            className={styles.efPenIcon}
+            width={40}
+            height={40}
+            src="/efPenIcon.png"
+            alt="efPenIcon"
+          />
+          <p className={styles.informationSectionTitle}>探索</p>
+          <hr />
+          <p className={styles.informationSectionContent}>
+            我們提供公正的資訊， 幫您順利轉職， 並追蹤最新的業界動態。
           </p>
-        </a>
-      </div>
+          <EffectBtn name={"找學校"} btnType={"filledBtn"} />
+        </div>
+        <div className={styles.informationSectionCard}>
+          <Image
+            className={styles.efPenIcon}
+            width={40}
+            height={40}
+            src="/efPenIcon.png"
+            alt="efPenIcon"
+          />
+          <p className={styles.informationSectionTitle}>技能樹</p>
+          <hr />
+          <p className={styles.informationSectionContent}>
+            前端包含哪些技術？ 你又學會了哪些？ 趕緊點進來試試看。
+          </p>
+          <EffectBtn name={"技能樹"} btnType={"filledBtn"} />
+        </div>
+      </section>
+
+      <section className={styles.aboutSection}>
+        <p className={styles.aboutSectionTitle}>關於</p>
+        <hr />
+        <p className={styles.aboutSectionContent}>
+          近年來，社會對於軟體工程師的需求急速增加，全台各地的補習也如雨後春筍般開業，
+          然而人的時間有限，要如何找到適合自己的學習環境？
+          <br />
+          <br />
+          「Front-Enter」特別針對前端工程的學習資源，進行蒐集、分類，
+          期待讓有志成為前端工程師的人，找到最適合自己的學習環境。
+        </p>
+      </section>
     </main>
   );
 }

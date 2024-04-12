@@ -1,0 +1,73 @@
+@import "../../media.module";
+
+.header {
+  width: 100%;
+  height: 110px;
+  min-height: 60px;
+  padding-left: 20px;
+  padding-right: 50px;
+  background: linear-gradient(white, white), var(--background-color);
+  opacity: 0.8;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile {
+    height: 60px;
+    padding: 0px 15px;
+  }
+
+  .logo {
+    width: auto;
+    height: 70px;
+    transition: transform 0.5s ease-in;
+    &:hover {
+      transform: scale(1.1);
+    }
+    @include mobile {
+      height: 50px;
+      margin-left: -10px;
+      margin-top: 8px;
+    }
+  }
+
+  nav {
+    width: 35vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mobile {
+      width: 50vw;
+    }
+
+    li {
+      cursor: pointer;
+      list-style-type: none;
+      white-space: nowrap;
+      letter-spacing: 1px;
+      &:hover {
+        color: var(--primary-color);
+      }
+
+      .navigationBtn {
+        font-size: var(--text-size-h3);
+      }
+    }
+    .searchIcon {
+      width: auto;
+      height: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
